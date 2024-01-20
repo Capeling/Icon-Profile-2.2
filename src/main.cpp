@@ -3,16 +3,18 @@
 
 using namespace geode::prelude;
 
-int getFrameIcon(IconType type) {
+int getFrameIcon(int type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
         default: return gManager->getPlayerFrame();
-        case IconType::Ship: return gManager->getPlayerShip();
-        case IconType::Ball: return gManager->getPlayerBall();
-        case IconType::Ufo: return gManager->getPlayerBird();
-        case IconType::Wave: return gManager->getPlayerDart();
-        case IconType::Robot: return gManager->getPlayerRobot();
-        case IconType::Spider: return gManager->getPlayerSpider();
+        case 1 return gManager->getPlayerShip();
+        case 2 return gManager->getPlayerBall();
+        case 3 return gManager->getPlayerBird();
+        case 4 return gManager->getPlayerDart();
+        case 5 return gManager->getPlayerRobot();
+        case 6 return gManager->getPlayerSpider();
+	case 7 return gManager->getPlayerSwing(); 
+	case 8 return gManager->getPlayerJetpack();
     }
 }
 

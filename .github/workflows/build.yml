@@ -21,10 +21,12 @@ jobs:
         - name: Android32
           os: ubuntu-latest
           target: Android32
+          bindings: Capeling/bindings
 
         - name: Android64
           os: ubuntu-latest
           target: Android64
+          bindings: Capeling/bindings
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}

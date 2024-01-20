@@ -33,7 +33,7 @@ class $modify(MenuLayer) {
 		playerIcon->setGlowOutline(gm->colorForIdx(gm->getPlayerGlowColor()));
 		playerIcon->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
 		if(!gm->getPlayerGlow()) playerIcon->disableGlowOutline();
-		playerIcon->updatePlayerFrame(getFrameIcon(gm->m_playerIconType), gm->m_playerIconType);
+		playerIcon->updatePlayerFrame(static_cast<int>(getFrameIcon(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
 		playerIcon->setScale(1.15);
 		CCSprite* playerSprite = as<CCSprite*>(as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"))->getChildren()->objectAtIndex(0));
 		playerSprite->addChild(playerIcon);

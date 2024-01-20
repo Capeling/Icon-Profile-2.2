@@ -7,14 +7,14 @@ int getFrameIcon(int type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
         default: return gManager->getPlayerFrame();
-        case 1 return gManager->getPlayerShip();
-        case 2 return gManager->getPlayerBall();
-        case 3 return gManager->getPlayerBird();
-        case 4 return gManager->getPlayerDart();
-        case 5 return gManager->getPlayerRobot();
-        case 6 return gManager->getPlayerSpider();
-	case 7 return gManager->getPlayerSwing(); 
-	case 8 return gManager->getPlayerJetpack();
+        case 1: return gManager->getPlayerShip();
+        case 2: return gManager->getPlayerBall();
+        case 3: return gManager->getPlayerBird();
+        case 4: return gManager->getPlayerDart();
+        case 5: return gManager->getPlayerRobot();
+        case 6: return gManager->getPlayerSpider();
+	case 7: return gManager->getPlayerSwing(); 
+	case 8: return gManager->getPlayerJetpack();
     }
 }
 

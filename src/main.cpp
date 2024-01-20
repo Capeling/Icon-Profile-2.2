@@ -1,10 +1,11 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
-#include <Geode/platform/platform.hpp>
+#include <Geode/platform/cplatform.h>
 
 using namespace geode::prelude;
 
-int getFrameIconAndroid(int type) {
+#ifdef GEODE_IS_ANDROID
+int getFrameIcon(int type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
         default: return gManager->getPlayerFrame();
@@ -18,8 +19,9 @@ int getFrameIconAndroid(int type) {
 	case 8: return gManager->getPlayerJetpack();
     }
 }
-
-int getFrameIconWin(IconType type) {
+#endif
+#ifdef GEODE_IS_WINDOWS
+int getFrameIcon(IconType type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
         default: return gManager->getPlayerFrame();
@@ -33,7 +35,7 @@ int getFrameIconWin(IconType type) {
 	case IconType::Jetpack: return gManager->getPlayerJetpack();
     }
 }
-
+#endif
 
 class $modify(MenuLayer) {
 	bool init() {
@@ -52,17 +54,7 @@ class $modify(MenuLayer) {
 		playerIcon->setGlowOutline(gm->colorForIdx(gm->getPlayerGlowColor()));
 		playerIcon->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
 		if(!gm->getPlayerGlow()) playerIcon->disableGlowOutline();
-		switch (lp) {
-	                case Windows: playerIcon->updatePlayerFrame(static_cast<int>(getFrameIconWin(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
-	                /*case MacOS: return "mac";*/
-	                /*case iOS: return "ios";*/
-	                case Android32: playerIcon->updatePlayerFrame(static_cast<int>(getFrameIconAndroid(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
-	                case Android64: playerIcon->updatePlayerFrame(static_cast<int>(getFrameIconAndroid(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
-	                /*case Linux: return "linux";*/
-	                default: playerIcon->updatePlayerFrame(static_cast<int>(getFrameIconWin(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
-            	}
-			
-		/*playerIcon->updatePlayerFrame(static_cast<int>(getFrameIcon(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));*/
+		playerIcon->updatePlayerFrame(static_cast<int>(getFrameIcon(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
 		playerIcon->setScale(1.15);
 		CCSprite* playerSprite = as<CCSprite*>(as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"))->getChildren()->objectAtIndex(0));
 		playerSprite->addChild(playerIcon);

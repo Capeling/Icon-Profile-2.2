@@ -21,12 +21,10 @@ jobs:
         - name: Android32
           os: ubuntu-latest
           target: Android32
-          bindings: Capeling/bindings
 
         - name: Android64
           os: ubuntu-latest
           target: Android64
-          bindings: Capeling/bindings
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -37,7 +35,6 @@ jobs:
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: Capeling/bindings
           sdk: nightly
           combine: true
           target: ${{ matrix.config.target }}

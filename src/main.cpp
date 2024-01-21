@@ -36,6 +36,22 @@ int getFrameIcon(IconType type) {
     }
 }
 #endif
+#ifdef GEODE_IS_MACOS
+int getFrameIcon(IconType type) {
+    auto gManager = GameManager::sharedState();
+    switch(type) {
+        default: return gManager->getPlayerFrame();
+        case IconType::Ship: return gManager->getPlayerShip();
+        case IconType::Ball: return gManager->getPlayerBall();
+        case IconType::Ufo: return gManager->getPlayerBird();
+        case IconType::Wave: return gManager->getPlayerDart();
+        case IconType::Robot: return gManager->getPlayerRobot();
+        case IconType::Spider: return gManager->getPlayerSpider();
+	case IconType::Swing: return gManager->getPlayerSwing(); 
+	case IconType::Jetpack: return gManager->getPlayerJetpack();
+    }
+}
+#endif
 
 class $modify(MenuLayer) {
 	bool init() {

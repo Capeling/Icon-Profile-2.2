@@ -1,4 +1,7 @@
 # Icon Profile Changelog
+## Version v1.2.0
+- reuse the windows method for android
+- bump gd version for android
 ## Version v1.1.0
 - Added 2.2 support (fixed compiling) for Android
 - Added Swing icon support

@@ -6,7 +6,8 @@
 	"developer": "Capeling",
 	"gd": {
 		"win": "2.204",
-		"android": "2.200"
+		"android": "2.205",
+		"mac": "2.204"
 	},
 	"description": "Replaces the Main Menu Profile Sprite with your icon!"
 }

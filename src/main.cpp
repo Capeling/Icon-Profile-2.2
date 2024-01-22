@@ -5,18 +5,18 @@
 using namespace geode::prelude;
 
 #ifdef GEODE_IS_ANDROID
-int getFrameIcon(int type) {
+int getFrameIcon(IconType type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
         default: return gManager->getPlayerFrame();
-        case 1: return gManager->getPlayerShip();
-        case 2: return gManager->getPlayerBall();
-        case 3: return gManager->getPlayerBird();
-        case 4: return gManager->getPlayerDart();
-        case 5: return gManager->getPlayerRobot();
-        case 6: return gManager->getPlayerSpider();
-	case 7: return gManager->getPlayerSwing(); 
-	case 8: return gManager->getPlayerJetpack();
+        case IconType::Ship: return gManager->getPlayerShip();
+        case IconType::Ball: return gManager->getPlayerBall();
+        case IconType::Ufo: return gManager->getPlayerBird();
+        case IconType::Wave: return gManager->getPlayerDart();
+        case IconType::Robot: return gManager->getPlayerRobot();
+        case IconType::Spider: return gManager->getPlayerSpider();
+	case IconType::Swing: return gManager->getPlayerSwing(); 
+	case IconType::Jetpack: return gManager->getPlayerJetpack();
     }
 }
 #endif
@@ -37,18 +37,18 @@ int getFrameIcon(IconType type) {
 }
 #endif
 #ifdef GEODE_IS_MACOS
-int getFrameIcon(IconType type) {
+int getFrameIcon(int type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
         default: return gManager->getPlayerFrame();
-        case IconType::Ship: return gManager->getPlayerShip();
-        case IconType::Ball: return gManager->getPlayerBall();
-        case IconType::Ufo: return gManager->getPlayerBird();
-        case IconType::Wave: return gManager->getPlayerDart();
-        case IconType::Robot: return gManager->getPlayerRobot();
-        case IconType::Spider: return gManager->getPlayerSpider();
-	case IconType::Swing: return gManager->getPlayerSwing(); 
-	case IconType::Jetpack: return gManager->getPlayerJetpack();
+        case 1: return gManager->getPlayerShip();
+        case 2: return gManager->getPlayerBall();
+        case 3: return gManager->getPlayerBird();
+        case 4: return gManager->getPlayerDart();
+        case 5: return gManager->getPlayerRobot();
+        case 6: return gManager->getPlayerSpider();
+	case 7: return gManager->getPlayerSwing(); 
+	case 8: return gManager->getPlayerJetpack();
     }
 }
 #endif

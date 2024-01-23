@@ -4,23 +4,6 @@
 
 using namespace geode::prelude;
 
-#ifdef GEODE_IS_ANDROID
-int getFrameIcon(int type) {
-    auto gManager = GameManager::sharedState();
-    switch(type) {
-        default: return gManager->getPlayerFrame();
-        case 1: return gManager->getPlayerShip();
-        case 2: return gManager->getPlayerBall();
-        case 3: return gManager->getPlayerBird();
-        case 4: return gManager->getPlayerDart();
-        case 5: return gManager->getPlayerRobot();
-        case 6: return gManager->getPlayerSpider();
-	case 7: return gManager->getPlayerSwing(); 
-	case 8: return gManager->getPlayerJetpack();
-    }
-}
-#endif
-#ifdef GEODE_IS_WINDOWS
 int getFrameIcon(IconType type) {
     auto gManager = GameManager::sharedState();
     switch(type) {
@@ -35,7 +18,6 @@ int getFrameIcon(IconType type) {
 	case IconType::Jetpack: return gManager->getPlayerJetpack();
     }
 }
-#endif
 
 class $modify(MenuLayer) {
 	bool init() {

@@ -3,6 +3,7 @@
 	"version": "v1.1.1",
 	"id": "capeling.icon_profile_2.2",
 	"name": "Icon Profile 2.2",
+	"repository": "https://github.com/Capeling/Icon-Profile-2.2",
 	"developer": "Capeling",
 	"gd": {
 		"win": "2.204",

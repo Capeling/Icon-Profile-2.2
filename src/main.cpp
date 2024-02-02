@@ -1,6 +1,5 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
-#include <Geode/platform/cplatform.h>
 
 using namespace geode::prelude;
 
@@ -31,12 +30,12 @@ class $modify(MenuLayer) {
 		profileMenu->setPositionX(this->getChildByID("player-username")->getPositionX());
 
 		SimplePlayer* playerIcon = SimplePlayer::create(0);
+		playerIcon->updatePlayerFrame(static_cast<int>(getFrameIcon(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
 		playerIcon->setColor(gm->colorForIdx(gm->getPlayerColor()));
 		playerIcon->setSecondColor(gm->colorForIdx(gm->getPlayerColor2()));
 		playerIcon->setGlowOutline(gm->colorForIdx(gm->getPlayerGlowColor()));
 		playerIcon->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
 		if(!gm->getPlayerGlow()) playerIcon->disableGlowOutline();
-		playerIcon->updatePlayerFrame(static_cast<int>(getFrameIcon(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
 		playerIcon->setScale(1.15);
 		CCSprite* playerSprite = as<CCSprite*>(as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"))->getChildren()->objectAtIndex(0));
 		playerSprite->addChild(playerIcon);

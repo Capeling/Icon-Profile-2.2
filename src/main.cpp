@@ -18,6 +18,14 @@ int getFrameIcon(IconType type) {
     }
 }
 
+void helpGeodeUpdate() {
+    auto* mod = Loader::get()->getLoadedMod("geode.loader");
+    auto value = mod->getSavedValue<std::string>("last-modified-auto-update-check");
+    if (value.ends_with('\r')) {
+        mod->setSavedValue("last-modified-auto-update-check", value.substr(0, value.size() - 1));
+    }
+}
+
 class $modify(MenuLayer) {
 	bool init() {
 		if(!MenuLayer::init())
@@ -25,6 +33,7 @@ class $modify(MenuLayer) {
 		
 		auto gm = GameManager::sharedState();
 
+		helpGeodeUpdate();
 		auto profileMenu = this->getChildByID("profile-menu");
 		profileMenu->setLayout(AxisLayout::create());
 		profileMenu->setPositionX(this->getChildByID("player-username")->getPositionX());

@@ -47,6 +47,8 @@ class $modify(MenuLayer) {
 		if(!gm->getPlayerGlow()) playerIcon->disableGlowOutline();
 		playerIcon->setScale(1.15);
 		CCSprite* playerSprite = as<CCSprite*>(as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"))->getChildren()->objectAtIndex(0));
+		if(gm->m_playerIconType == IconType::Robot) playerIcon->m_robotSprite->runAnimation("idle01");
+		if(gm->m_playerIconType == IconType::Spider) playerIcon->m_spiderSprite->runAnimation("idle01");
 		playerSprite->addChild(playerIcon);
 		playerSprite->setDisplayFrame(playerIcon->displayFrame());
 		

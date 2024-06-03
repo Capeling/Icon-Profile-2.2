@@ -13,16 +13,8 @@ int getFrameIcon(IconType type) {
         case IconType::Wave: return gManager->getPlayerDart();
         case IconType::Robot: return gManager->getPlayerRobot();
         case IconType::Spider: return gManager->getPlayerSpider();
-	case IconType::Swing: return gManager->getPlayerSwing(); 
-	case IconType::Jetpack: return gManager->getPlayerJetpack();
-    }
-}
-
-void helpGeodeUpdate() {
-    auto* mod = Loader::get()->getLoadedMod("geode.loader");
-    auto value = mod->getSavedValue<std::string>("last-modified-auto-update-check");
-    if (value.ends_with('\r')) {
-        mod->setSavedValue("last-modified-auto-update-check", value.substr(0, value.size() - 1));
+		case IconType::Swing: return gManager->getPlayerSwing(); 
+		case IconType::Jetpack: return gManager->getPlayerJetpack();
     }
 }
 
@@ -33,7 +25,6 @@ class $modify(MenuLayer) {
 		
 		auto gm = GameManager::sharedState();
 
-		helpGeodeUpdate();
 		auto profileMenu = this->getChildByID("profile-menu");
 		profileMenu->setLayout(AxisLayout::create());
 		profileMenu->setPositionX(this->getChildByID("player-username")->getPositionX());
@@ -47,8 +38,8 @@ class $modify(MenuLayer) {
 		if(!gm->getPlayerGlow()) playerIcon->disableGlowOutline();
 		playerIcon->setScale(1.15);
 		CCSprite* playerSprite = as<CCSprite*>(as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"))->getChildren()->objectAtIndex(0));
-		if(gm->m_playerIconType == IconType::Robot) playerIcon->m_robotSprite->runAnimation("idle01");
-		if(gm->m_playerIconType == IconType::Spider) playerIcon->m_spiderSprite->runAnimation("idle01");
+		//if(gm->m_playerIconType == IconType::Robot) playerIcon->m_robotSprite->runAnimation("idle01");
+		//if(gm->m_playerIconType == IconType::Spider) playerIcon->m_spiderSprite->runAnimation("idle01");
 		playerSprite->addChild(playerIcon);
 		playerSprite->setDisplayFrame(playerIcon->displayFrame());
 		

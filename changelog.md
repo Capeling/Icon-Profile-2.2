@@ -1,4 +1,6 @@
 # Icon Profile Changelog
+## v1.2.0
+- Updated for 2.206
 ## v1.1.4
 - Robot & Spider are now Animated
 ## v1.1.3

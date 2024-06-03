@@ -45,7 +45,6 @@
 # Workspace files are user-specific
 *.sublime-workspace
 *\.vs
-CmakeSettings.json
 
 # ILY vscode
 **/.vscode

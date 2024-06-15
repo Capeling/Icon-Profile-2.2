@@ -42,7 +42,7 @@ class $modify(MenuLayer) {
 		//if(gm->m_playerIconType == IconType::Spider) playerIcon->m_spiderSprite->runAnimation("idle01");
 		playerSprite->addChild(playerIcon);
 		playerSprite->setDisplayFrame(playerIcon->displayFrame());
-		
+
 		return true;
 	}
 };

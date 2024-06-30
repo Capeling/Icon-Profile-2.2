@@ -1,6 +1,6 @@
 {
-	"geode": "3.0.0-beta.1",
-	"version": "v1.2.0",
+	"geode": "3.1.1",
+	"version": "v1.2.1",
 	"id": "capeling.icon_profile",
 	"name": "Icon Profile",
 	"repository": "https://github.com/Capeling/Icon-Profile-2.2",
@@ -17,5 +17,13 @@
 			"version": "*",
 			"importance": "superseded"
 		}
-	]
+	],
+	"settings": {
+		"animations":{
+			"type": "bool",
+			"default": true,
+			"name": "Animations",
+			"description": "Adds the idle animation to the spider and robot"
+		}
+	}
 }

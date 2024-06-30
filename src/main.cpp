@@ -1,3 +1,5 @@
+#include "Geode/binding/CCMenuItemSpriteExtra.hpp"
+#include "Geode/utils/cocos.hpp"
 #include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 
@@ -26,22 +28,28 @@ class $modify(MenuLayer) {
 		auto gm = GameManager::sharedState();
 
 		auto profileMenu = this->getChildByID("profile-menu");
-		profileMenu->setLayout(AxisLayout::create());
-		profileMenu->setPositionX(this->getChildByID("player-username")->getPositionX());
 
 		SimplePlayer* playerIcon = SimplePlayer::create(0);
-		playerIcon->updatePlayerFrame(static_cast<int>(getFrameIcon(gm->m_playerIconType)), static_cast<IconType>(gm->m_playerIconType));
+		playerIcon->updatePlayerFrame(getFrameIcon(gm->m_playerIconType), gm->m_playerIconType);
 		playerIcon->setColor(gm->colorForIdx(gm->getPlayerColor()));
 		playerIcon->setSecondColor(gm->colorForIdx(gm->getPlayerColor2()));
 		playerIcon->setGlowOutline(gm->colorForIdx(gm->getPlayerGlowColor()));
 		playerIcon->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
 		if(!gm->getPlayerGlow()) playerIcon->disableGlowOutline();
+
 		playerIcon->setScale(1.15);
-		CCSprite* playerSprite = as<CCSprite*>(as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"))->getChildren()->objectAtIndex(0));
-		//if(gm->m_playerIconType == IconType::Robot) playerIcon->m_robotSprite->runAnimation("idle01");
-		//if(gm->m_playerIconType == IconType::Spider) playerIcon->m_spiderSprite->runAnimation("idle01");
-		playerSprite->addChild(playerIcon);
-		playerSprite->setDisplayFrame(playerIcon->displayFrame());
+
+		if(Mod::get()->getSettingValue<bool>("animations")) {
+			if(gm->m_playerIconType == IconType::Robot) playerIcon->m_robotSprite->runAnimation("idle01");
+			if(gm->m_playerIconType == IconType::Spider) playerIcon->m_spiderSprite->runAnimation("idle01");
+		}
+
+		auto profileBtn = as<CCMenuItemSpriteExtra*>(profileMenu->getChildByID("profile-button"));
+		auto profileSpr = getChildOfType<CCSprite>(profileBtn, 0);
+
+		profileSpr->setDisplayFrame(playerIcon->displayFrame());
+		profileSpr->addChild(playerIcon);
+		profileBtn->setPositionX(30);
 
 		return true;
 	}

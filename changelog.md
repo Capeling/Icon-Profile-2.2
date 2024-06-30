@@ -1,4 +1,7 @@
 # Icon Profile Changelog
+## v1.2.1
+- Readded animations with a setting to toggle them off
+- Removed the layout i added for some reason
 ## v1.2.0
 - Updated for 2.206
 ## v1.1.4
